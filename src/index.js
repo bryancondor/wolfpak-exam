@@ -1,8 +1,9 @@
 'use strict'
+const { pickValuesThatCompletedMaxValue } = require('./shared/pickValuesThatCompletedMaxValue');
 const { sliceBySize } = require('./shared/sliceBySize');
 
-const parseToDroneAndWeight = ([droneName, weight]) => ({ droneName, weight });
-const parseToLocationAndWeight = ([location, weight]) => ({ location, weight });
+const parseToDroneAndMaxWeight = ([droneName, maxWeight]) => ({ droneName, maxWeight: Number(maxWeight) });
+const parseToLocationAndWeight = ([location, weight]) => ({ location, weight: Number(weight) });
 
 const dataFromCsv = () => {
     const fs = require('fs');
@@ -14,25 +15,27 @@ const dataFromCsv = () => {
     return parse(inputBuffer, { relaxColumnCountLess: true });
 }
 
-const [listDroneAndWeight, ...listLocationAndWeight] = dataFromCsv();
+const [listDroneAndMaxWeight, ...listLocationAndWeight] = dataFromCsv();
 
-const listDroneAndWeightParsed = sliceBySize(2, listDroneAndWeight)
-    .map(parseToDroneAndWeight);
+const listDroneAndMaxWeightParsed = sliceBySize(2, listDroneAndMaxWeight)
+    .map(parseToDroneAndMaxWeight);
 
 const listLocationAndWeightParsed = sliceBySize(2, listLocationAndWeight)
     .flat()
     .map(parseToLocationAndWeight);
 
 // Pending to implemente, how packing the drones to be efficient
+const weigthOfLocations = listLocationAndWeightParsed.map(({ weight }) => weight);
+console.log('[bcd] weigthOfLocations:', weigthOfLocations);
 
 
+listDroneAndMaxWeightParsed.forEach(({ maxWeight }) => {
+    const data = pickValuesThatCompletedMaxValue(weigthOfLocations, Number(maxWeight))
 
+    console.log(`[bcd] Drone with max weight ${maxWeight}`, data);
+});
 
-
-
-
-
-console.log('[bcd] listDroneAndWeightParsed:', listDroneAndWeightParsed);
+console.log('[bcd] listDroneAndMaxWeightParsed:', listDroneAndMaxWeightParsed);
 console.log('[bcd] listLocationAndWeightParsed:', listLocationAndWeightParsed);
 
 
