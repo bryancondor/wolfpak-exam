@@ -31,7 +31,7 @@ const assignShippingsToDrone = (specificationsOfDrone, shippingsPending, shippin
 
 const itinerary = {};
 
-assignShippingsToDrone(droneSpecifications, shippings, (shippingsAssignedByDrone, index) => {
+assignShippingsToDrone(droneSpecifications, shippings, (shippingsAssignedByDrone) => {
     const { droneName, maxWeight, shippingsPicked } = shippingsAssignedByDrone;
 
     if (!itinerary[droneName]) {
