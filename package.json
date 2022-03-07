@@ -2,9 +2,9 @@
   "name": "wolfpak-exam",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
-    "start": "nodemon src/index.js",
+    "start": "nodemon src/main.js",
     "test": "jest",
     "test:watch": "jest --watch"
   },
