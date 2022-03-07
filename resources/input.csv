@@ -1,8 +1,14 @@
-dron1,5,drone2,10,drone3,12
-location1,2
-location2,4
-location3,6
-location4,6
-location5,8
-location6,10
-location7,1
+RaptorDrone,5,VelocityDrone,10,FlashDrone,12,CondorsDrone,15
+Lince,2
+Lima,4
+Arequipa,6
+San Isidro,6
+Miraflores,8
+Arenales,10
+Quito,1
+Trujillo,13
+Huancayo,5
+San Martin de Pangoa,8
+Cajamarca,2
+Pachacamac,5
+Angamos,9
