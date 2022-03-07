@@ -4,8 +4,10 @@
   "description": "",
   "main": "main.js",
   "scripts": {
+    "prestart": "npm install",
     "start": "node src/main.js",
     "start:watch": "nodemon src/main.js",
+    "pretest": "npm install",
     "test": "jest",
     "test:watch": "jest --watch"
   },
